@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <title>My Profile</title>
+    <!-- <style>
+      * {
+        font-family: "Epilogue", sans-serif;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100vh;
+        width: 100%;
+        text-align: center;
+      }
+      header {
+        margin-top: 20px;
+      }
+      .profile-image {
+        max-width: 200px;
+        border-radius: 50%;
+        margin: 20px auto;
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 18px;
+      }
+      a {
+        text-decoration: none;
+        color: #0077b6;
+      }
+    </style> -->
+  </head>
+  <body>
+    <header>
+      <h1 data-testid="slackUserName">Tolani Emmanuel</h1>
+    </header>
+    <section>
+        <img
+          src="./images/slack_profile_picture.jpg"
+          alt="Terence's Slack profile picture"
+          class="profile-image"
+          data-testid="slackDisplayImage"
+        />
+        <div>
+
+            <h1 data-testid="Terence">Terence</h1>
+            <div class="container">
+                <h3>Current Day of the Week:</h3>
+                <span data-testid="currentDayOfTheWeek" id="dayOfWeek"></span>
+            </div>
+            <div class="container">
+                <h3>Current UTC Time:</h3>
+                <span data-testid="currentUTCTime" id="utcTime"></span>
+            </div>
+            <div class="container">
+                <h3>Track:</h3>
+                <span data-testid="myTrack" class="below">Frontend</span>
+            </div>
+            <h3 data-testid="github.com/kvibe265">
+              GitHub URL:
+              <a
+                href="https://github.com/TNuel"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Visit my GitHub</a
+              >
+            </h3>
+        </div>
+    </section>
+
+    <script>
+      // Function to update the day of the week and UTC time
+      function updateDateTime() {
+        const dayOfWeekElement = document.getElementById("dayOfWeek");
+        const utcTimeElement = document.getElementById("utcTime");
+
+        const now = new Date();
+        const daysOfWeek = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        const dayOfWeek = daysOfWeek[now.getUTCDay()];
+        const utcTime = now.toISOString().substr(11, 8);
+
+        dayOfWeekElement.textContent = dayOfWeek;
+        utcTimeElement.textContent = utcTime;
+      }
+
+      // Update the time immediately and then every 1 second (1000 milliseconds)
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
+    </script>
+  </body>
+</html>
