@@ -3,53 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <title>My Profile</title>
+    <title>My Personal Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #333;
+      }
+
+      img {
+        max-width: 200px;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+      }
+
+      p {
+        font-size: 18px;
+        color: #666;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <h1 data-testid="slackUserName">Tolani Emmanuel</h1>
-    </header>
-    <section>
-        <img
-          src="./images/slack_profile_picture.jpg"
-          alt="Nuel"
-          class="profile-image"
-          data-testid="slackDisplayImage"
-        />
-        <div>
+    <!-- Slack Name -->
+    <h1 data-testid="slackUserName">Nuel</h1>
 
-            <h1 data-testid="Terence">Terence</h1>
-            <div class="container">
-                <h3>Current Day of the Week:</h3>
-                <span data-testid="currentDayOfTheWeek" id="dayOfWeek"></span>
-            </div>
-            <div class="container">
-                <h3>Current UTC Time:</h3>
-                <span data-testid="currentUTCTime" id="utcTime"></span>
-            </div>
-            <div class="container">
-                <h3>Track:</h3>
-                <span data-testid="myTrack" class="below">Frontend</span>
-            </div>
-            <h3 data-testid="githubURL">
-              GitHub URL:
-              <a
-                href="https://github.com/TNuel/Frontend-Page-Creation-with-Specific-Elements"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Visit my GitHub</a
-              >
-            </h3>
-        </div>
-    </section>
+    <!-- Slack Display Picture -->
+    <img
+      src="https://ca.slack-edge.com/T05FFAA91JP-U05R4AWJBHC-e2c8fe69ea61-512"
+      alt="Nuel"
+      data-testid="slackDisplayImage"
+    />
 
-    <script src="script.js"></script>
+    <!-- Current Day of the Week -->
+    <p data-testid="currentDayOfTheWeek"></p>
+
+    <!-- Current UTC Time -->
+    <p data-testid="currentUTCTime"></p>
+
+    <!-- Track -->
+    <p data-testid="myTrack">Frontend</p>
+
+    <!-- GitHub URL -->
+    <p>
+      <a
+        href="https://github.com/TNuel/Frontend-Page-Creation-with-Specific-Elements.git"
+        data-testid="githubURL"
+        >GitHub</a
+      >
+    </p>
+
+    <script>
+      // JavaScript to populate dynamic data
+
+      // Slack Name
+      document.querySelector('[data-testid="slackUserName"]').textContent = "Your Slack Name";
+
+      // Current Day of the Week
+      const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const today = new Date();
+      const currentDay = daysOfWeek[today.getDay()];
+      document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = currentDay;
+
+      // Current UTC Time (updated every second)
+      function updateUTCTime() {
+          const currentUTCTime = new Date().toUTCString();
+          document.querySelector('[data-testid="currentUTCTime"]').textContent = currentUTCTime;
+      }
+      
+      // Update the UTC time initially and then every second
+      updateUTCTime();
+      setInterval(updateUTCTime, 1000);
+  </script>
   </body>
 </html>
