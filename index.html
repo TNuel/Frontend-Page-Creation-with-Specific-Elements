@@ -99,7 +99,7 @@
           "Saturday",
         ];
         const dayOfWeek = daysOfWeek[now.getUTCDay()];
-        const utcTime = now.toISOString().substr(11, 8);
+        const utcTime = new Date().toUTCString();
 
         dayOfWeekElement.textContent = dayOfWeek;
         utcTimeElement.textContent = utcTime;
