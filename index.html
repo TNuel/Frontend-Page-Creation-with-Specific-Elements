@@ -83,21 +83,22 @@
       const currentDay = daysOfWeek[today.getDay()];
       document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = currentDay;
 
-      // Current Time (updated every millisecond)
+      // Current Time (hours, minutes, seconds, and milliseconds)
       function updateCurrentTime() {
-          const now = new Date();
-          const hours = now.getHours().toString().padStart(2, '0');
-          const minutes = now.getMinutes().toString().padStart(2, '0');
-          const seconds = now.getSeconds().toString().padStart(2, '0');
-          const milliseconds = now.getMilliseconds().toString().padStart(3, '0');
-          
-          const currentTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
-          document.querySelector('[data-testid="currentUTCTime"]').textContent = currentTime;
-      }
-      
-      // Update the current time initially and then every millisecond
-      updateCurrentTime();
-      setInterval(updateCurrentTime, 1);
+            const utcTimeString = new Date().toUTCString();
+            const utcTimeComponents = utcTimeString.match(/\d{2}:\d{2}:\d{2}/)[0].split(":");
+            const hours = utcTimeComponents[0];
+            const minutes = utcTimeComponents[1];
+            const seconds = utcTimeComponents[2];
+            const milliseconds = new Date().getUTCMilliseconds().toString().padStart(3, '0');
+            
+            const currentTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
+            document.querySelector('[data-testid="currentUTCTime"]').textContent = currentTime;
+        }
+        
+        // Update the current time initially and then every millisecond
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 1);
   </script>
   </body>
 </html>
