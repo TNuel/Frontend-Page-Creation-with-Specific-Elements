@@ -39,6 +39,9 @@
     </style>
   </head>
   <body>
+
+
+
     <!-- Slack Name -->
     <h1 data-testid="slackUserName">Nuel</h1>
 
@@ -69,6 +72,7 @@
     </p>
 
     <script>
+      // JavaScript to populate dynamic data
 
       // Slack Name
       document.querySelector('[data-testid="slackUserName"]').textContent = "Nuel";
@@ -79,15 +83,21 @@
       const currentDay = daysOfWeek[today.getDay()];
       document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = currentDay;
 
-      // Current UTC Time (updated every second)
-      function updateUTCTime() {
-          const currentUTCTime = new Date().toUTCString();
-          document.querySelector('[data-testid="currentUTCTime"]').textContent = currentUTCTime;
+      // Current Time (updated every millisecond)
+      function updateCurrentTime() {
+          const now = new Date();
+          const hours = now.getHours().toString().padStart(2, '0');
+          const minutes = now.getMinutes().toString().padStart(2, '0');
+          const seconds = now.getSeconds().toString().padStart(2, '0');
+          const milliseconds = now.getMilliseconds().toString().padStart(3, '0');
+          
+          const currentTime = `${hours}:${minutes}:${seconds}.${milliseconds}`;
+          document.querySelector('[data-testid="currentUTCTime"]').textContent = currentTime;
       }
       
-      // Update the UTC time initially and then every second
-      updateUTCTime();
-      setInterval(updateUTCTime, 1000);
+      // Update the current time initially and then every millisecond
+      updateCurrentTime();
+      setInterval(updateCurrentTime, 1);
   </script>
   </body>
 </html>
