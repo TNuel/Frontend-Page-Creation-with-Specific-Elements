@@ -1,5 +1,5 @@
 // Slack Name
-document.querySelector('[data-testid="slackUserName"]').textContent = "Nuel";
+document.querySelector('[data-testid="slackUserName"]').textContent = "Tolani Emmanuel";
 
 // Current Day of the Week
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
